@@ -5,4 +5,6 @@ To use, simply `go run cloudbleed.go` - it will download the file and prompt for
 To update the file, delete the sorted_unique_cf.txt file. Automated update checks will be added soon
 
 **Example:**
-![example](https://phineas.io/screenshots/rwcjj.png)
+
+![example]
+(https://phineas.io/screenshots/rwcjj.png)
