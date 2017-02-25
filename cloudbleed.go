@@ -40,6 +40,25 @@ func downloadLatestCloudbleed() {
   fmt.Println(n, "bytes downloaded.")
 }
 
+func checkDomain(domain string) string {
+  if _, err := os.Stat("sorted_unique_cf.txt"); os.IsNotExist(err) {
+    downloadLatestCloudbleed()
+  }
+
+  b, err := ioutil.ReadFile("sorted_unique_cf.txt")
+  if(err != nil) {
+    panic(err)
+  }
+
+  s := string(b)
+
+  if(strings.Contains(s, "\n" + strings.ToLower(domain) + "\n")) {
+    return domain + " is in the Cloudflare directory"
+  } else {
+    return domain + " is not in the Cloudflare directory"
+  }
+}
+
 func main() {
   if _, err := os.Stat("sorted_unique_cf.txt"); os.IsNotExist(err) {
     downloadLatestCloudbleed()
@@ -49,17 +68,5 @@ func main() {
   fmt.Print("What would you like to search in Cloudflare? -> ")
   fmt.Scanln(&domain)
 
-  
-  b, err := ioutil.ReadFile("sorted_unique_cf.txt")
-  if(err != nil) {
-    panic(err)
-  }
-
-  s := string(b)
-
-  if(strings.Contains(s, "\n" + domain + "\n")) {
-    fmt.Println(domain + " is in the Cloudflare directory")
-  } else {
-    fmt.Println(domain + " is not in the Cloudflare directory")
-  } 
+  fmt.Println(checkDomain(domain))
 }
