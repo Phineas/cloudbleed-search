@@ -54,6 +54,8 @@ func checkDomain(domain string) string {
 
   if(strings.Contains(s, "\n" + strings.ToLower(domain) + "\n")) {
     return domain + " is in the Cloudflare directory"
+  } else if(strings.Contains(s, strings.ToLower(domain))) {
+    return domain + " is not specifically in the Cloudflare directory, but there are domains that contain " + domain + " as a substring"
   } else {
     return domain + " is not in the Cloudflare directory"
   }
