@@ -6,5 +6,4 @@ To update the file, delete the sorted_unique_cf.txt file. Automated update check
 
 **Example:**
 
-![example]
-(https://phineas.io/screenshots/1sizl.png)
+![example](https://phineas.io/screenshots/1sizl.png)
